@@ -24,7 +24,7 @@ def prepare_data_set():
 	print(test_image_paths[0][4][0])
 	print(len(test_image_paths))
 	test_image_paths = [TEST_FOLDER + image_path[4][0] for image_path in test_image_paths if  os.path.isfile(TEST_FOLDER + image_path[4][0])]
-	test_image_label_ds = tf.data.Dataset.from_tensor_slices(test_image_paths[0:20])
+	test_image_label_ds = tf.data.Dataset.from_tensor_slices(test_image_paths)
 	test_image_label_ds = test_image_label_ds.map(load_and_preprocess_from_path)
 	test_image_label_ds = test_image_label_ds.batch(BATCH_SIZE)
 	test_image_label_ds = test_image_label_ds.prefetch(buffer_size=BATCH_SIZE)
